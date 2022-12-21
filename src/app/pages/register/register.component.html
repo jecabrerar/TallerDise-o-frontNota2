@@ -1,0 +1,78 @@
+<div style="min-width: 83vw;">
+  <app-header></app-header>
+  <div class="card col-4 md-6 mt-3" style="margin-left: auto; margin-right: auto;" >
+    <form [formGroup]="registerForm">
+      <div class="container center">
+
+          <div class="col-12 center mt-3" >
+            <h4>
+              CREA TU CUENTA EN EL CLUB AIEP-POKEDEX
+            </h4>
+          </div>
+          <div class="col-12">
+              <div class="mt-5">
+                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Error! </strong> {{errorMsj}}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div >
+                  <input
+                    formControlName="email"
+                    type="email"
+                    class="form-control"
+                    placeholder="Email"
+                    autocomplete="on">
+                </div>
+                <span *ngIf="email?.invalid && (email?.dirty || email?.touched) && email?.errors?.['required']" class="text-danger">El campo email es requerido</span>
+                <span *ngIf="email?.invalid && (email?.dirty || email?.touched) && email?.errors?.['email']" class="text-danger">El campo email es invalido</span>
+
+                <div class="mt-2">
+                  <input
+                    formControlName="password"
+                    type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    autocomplete="off">
+                </div>
+                <span *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">El campo password es requerido</span>
+
+                <div class="mt-2">
+                  <input
+                    formControlName="confirmPassword"
+                    type="password"
+                    class="form-control"
+                    placeholder="Confirmar Password"
+                    autocomplete="off">
+                </div>
+                <span *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)" class="text-danger"> El campo confirmacion password es requerido</span>
+
+                <div class="mt-2">
+                  <input
+                    formControlName="name"
+                    type="text"
+                    class="form-control"
+                    placeholder="Nombre"
+                    autocomplete="on">
+                </div>
+                <span *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="text-danger">El campo nombre es requerido</span>
+
+                <div class="right mt-3">
+                  <input
+                  [disabled]="registerForm.invalid"
+                  (click)="submitForm()"
+                  type="button"
+                  value="registrarse"
+                  class="btn btn-success">
+                </div>
+              </div>
+
+          </div>
+          <div class="center">
+            <img [src]="'/assets/img/pokemon-login.png'" width="443" height="248">
+          </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,17 @@
+<div class="d-flex div-menu flex-column flex-shrink-0 p-3 text-red bg-darkblue">
+  <a href="/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+    <span class="fs-4">Menu</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li *ngFor="let item of userService.menuItems" class="nav-item">
+          <a  routerLink="{{item.url}}" routerLinkActive="active" class="nav-link text-white" aria-current="page">
+              <i class="bi {{item.icon}}"></i>
+          {{item.text}}
+          </a>
+    </li>
+  </ul>
+  <hr>
+</div>
+

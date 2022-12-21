@@ -1,0 +1,85 @@
+<div>
+<app-header></app-header>
+<div class="card p-3">
+<div class="div-content">
+  <section class="text-left container">
+      <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light" style="color: red;">AIEP-POKEDEX</h1>
+          <p class="lead text-muted">La mejor plataforma para conocer sobre tus pokemones favoritos.</p>
+          <input 
+            [(ngModel)] = "searchText"
+            (keyup)="searchPokemon()"
+            (search)="clearSearch()"
+            
+            name="search"
+            id="search"
+            class="form-control form-control-dark btn-sm"
+            placeholder="Buscar..."
+            type="search"/>
+          </div>
+      </div>
+  </section>
+  
+  <div class="card-body">
+
+  <div class="album bg-light">
+    <div class="container">
+      <div *ngIf="listPokemon.length==0 && loading==false" class="alert alert-warning" role="alert" >
+          <h3>No existen resultados.!!!</h3>
+      </div>
+
+      <div *ngIf="loading==true" class="align-items-center">
+        <strong>Cargando...</strong>
+      <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+      </div>
+
+      <div *ngIf="listPokemon.length>0 && loading==false" class="row row-cols-sm-2 row-cols-md-3 g-1">
+        <div *ngFor="let poke of listPokemon" class="col">
+          <div class="card shadow-sm">
+
+            <div class="container col-12">
+              <div class="row align-items-start">
+                <div class="col-4">
+                  <img src="{{poke.poster}}" style="height: 100px ; width: 100px;" alt="">
+                </div>
+                <div class="col-4">
+                    <strong><p class="card-text">{{poke.name}}</p></strong>
+                    <!--<small class="text-muted">Id: <b><em>{{poke._id}}</em></b></small>-->
+                    <div class="justify-content-between align-items-center">
+                      <div *ngFor="let tipo of poke.typesPokemon" class="d-felx">
+                        <small class="text-muted">Tipo: <b><em>{{tipo?.name}}</em></b></small>
+                      </div>
+                    </div>
+                </div>                
+              </div>
+            </div>
+            <div class="col" style="text-align: center;">
+              <a href="https://www.pokemon.com/el/pokedex/{{poke.name}}" target="_blank" type="button" class="btn btn-sm btn-outline-secondary">Ver mas</a>
+            </div>
+            <div class="row">&nbsp;</div>
+          </div>
+      </div>               
+    </div>
+    
+    <nav *ngIf="listPokemon.length>0 && loading==false" aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" (click)="clickBack()"><a class="page-link" style="cursor: pointer;">Previous</a></li>
+            <li class="page-item" *ngFor="let page of sheets" [ngClass]="{'active':page+1==pageActive}">
+                <a (click)="clickPage(page+1)" 
+                    class="page-link"                 
+                    style="cursor: pointer;">{{page+1}}
+                </a>
+            </li>        
+            <li class="page-item" (click)="clickNext()"><a class="page-link" style="cursor: pointer;">Next</a></li>
+        </ul>
+      </nav> 
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+

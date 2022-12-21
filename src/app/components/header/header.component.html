@@ -1,0 +1,13 @@
+<div class="div-content">
+  <nav class="navbar navbar-darkblue bg-darkblue">
+    <div class="container-fluid d-flex">
+      <div style="margin-left: auto;" *ngIf="isAuthenticated==false" >
+          <a class="link" routerLink="/login">Iniciar Sesión</a> | <a class="link" style="text-decoration: none;" routerLink="/register">Registrarse</a>
+      </div>
+      <div style="margin-left: auto;" *ngIf="isAuthenticated" >
+       <span style="color: white;">{{userName}}: {{userRole}}</span> <button class="btn btn-cerrar" (click)="logout()" ><i class="bi bi-person-x-fill"></i> Cerrar Sesión</button>
+    </div>
+    </div>
+  </nav>
+  
+</div>

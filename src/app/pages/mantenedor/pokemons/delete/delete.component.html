@@ -1,0 +1,63 @@
+<div style="min-width: 83vw;">
+    <app-header></app-header>
+    <div class="card col-md-6 mt-3" style="margin-left: auto; margin-right: auto;" >
+      <div class="card-header bg-primary text-white">
+        <h4>Confirma Eliminar Pokemon</h4>
+      </div>
+  
+      <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong>{{errorMsj}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+  
+      <div class="card-body">        
+        <form [formGroup]="pokemonForm">
+            <div class="form-group">
+                <input
+                    formControlName="id"
+                    autocomplete="on"
+                    [(ngModel)]="pokemon._id"
+                    type="text"
+                    class="form-control mb-2"
+                    readonly>
+            </div>
+
+          <div class="form-group">
+            <input
+              formControlName="name"
+              autocomplete="on"              
+              [(ngModel)]="pokemon.name"
+              type="text"
+              class="form-control mb-2"
+              [ngClass]="{'is-invalid':name?.invalid && (name?.dirty || name?.touched)}"
+              readonly>
+          </div>
+          <span *ngIf="name?.invalid && (name?.dirty || name?.touched) && name?.errors?.['required']" class="text-danger">El campo name es requerido</span>
+  
+          <div class="form-group mt-3">
+            <input
+              formControlName="poster"
+              autocomplete="on"
+              [(ngModel)]="pokemon.poster"
+              type="text"
+              class="form-control mb-2"
+              [ngClass]="{'is-invalid':poster?.invalid && (poster?.dirty || poster?.touched)}"
+              readonly>
+          </div>
+          <span *ngIf="poster?.invalid && (poster?.dirty || poster?.touched)" class="text-danger">El campo poster es requerido</span>
+            
+          <div class="d-flex justify-content-between">            
+              <button
+              [disabled]="pokemonForm.invalid"
+              (click)="submitForm()"
+              type="button"
+              class="btn btn-danger mt-3">Eliminar Pokemon</button>
+
+              <a routerLink="/mantenedor-pokemon/manage" class="btn btn-secondary mt-3">Cancelar</a>            
+          </div>
+          <span *ngIf="error" class="text-danger">{{errorMsj}}</span>
+        </form>
+      </div>
+    </div>
+  </div>
+

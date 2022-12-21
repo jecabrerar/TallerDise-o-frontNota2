@@ -1,0 +1,11 @@
+.right {
+  float:right !important;
+}
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left {
+  float:left !important;
+}

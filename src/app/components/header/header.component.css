@@ -1,0 +1,31 @@
+.div-content {
+  min-width: 84vw;
+  overflow: auto;
+}
+
+.bg-darkblue{
+  --bs-bg-opacity:1;
+  background-color: rgb(9, 9, 91) !important
+}
+
+.nav-link.active{
+  color:yellow !important;
+  background-color: blue;
+  border-color:#dee2e6 #dee2e6 #fff;
+  font-weight: bold;
+}
+
+.link { color: white; text-decoration: none; } 
+.link:hover { 
+  color: yellow; 
+  font-weight: bold;
+} 
+
+.btn-cerrar{
+  color: white;
+}
+
+.btn-cerrar:hover{
+  color: yellow;
+  font-weight: bold;
+}
